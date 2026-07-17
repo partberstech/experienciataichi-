@@ -3,7 +3,7 @@
 import { ArrowLeft, Mail, MapPin, Calendar, Users, Sparkles, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { Card, CardContent, CardTitle, CardDescription, CardHeader } from "@/components/ui/Card";
+import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/Card";
 import { ContactForm } from "@/components/contact/ContactForm";
 import { cn } from "@/lib/utils";
 

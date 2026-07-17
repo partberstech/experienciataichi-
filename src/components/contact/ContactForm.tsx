@@ -4,7 +4,7 @@ import { ArrowLeft, Mail, MapPin, Calendar, Users, Sparkles, Loader2, CheckCircl
 import Link from "next/link";
 import { useState, FormEvent, ChangeEvent } from "react";
 import { Button } from "@/components/ui/Button";
-import { Card, CardContent, CardTitle, CardDescription, CardHeader } from "@/components/ui/Card";
+import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/Card";
 import { cn } from "@/lib/utils";
 
 interface FormData {

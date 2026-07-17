@@ -6,14 +6,9 @@ const cardVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-white/[0.02] border border-white/[0.08] rounded-xl",
-        elevated:
-          "bg-white/[0.03] border border-white/[0.08] rounded-xl shadow-[0_0_40px_rgba(0,0,0,0.3)]",
-        glass:
-          "bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-xl",
-        glow:
-          "bg-white/[0.02] border border-[#5e6ad2]/30 rounded-xl shadow-[0_0_30px_rgba(94,106,210,0.1)]",
+        default: "bg-white border border-gray-200 rounded-2xl",
+        elevated: "bg-white border border-gray-200 rounded-2xl shadow-sm",
+        subtle: "bg-gray-50 border border-gray-100 rounded-2xl",
       },
     },
     defaultVariants: {
@@ -39,58 +34,13 @@ export function Card({
     <div
       className={cn(
         cardVariants({ variant }),
-        interactive && "cursor-pointer hover:bg-white/[0.04] hover:border-white/[0.12] hover:shadow-[0_0_60px_rgba(0,0,0,0.4)]",
+        interactive && "cursor-pointer hover:shadow-md hover:border-gray-300",
         className
       )}
       {...props}
     >
       {children}
     </div>
-  );
-}
-
-export function CardHeader({
-  className,
-  children,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div className={cn("mb-4", className)} {...props}>
-      {children}
-    </div>
-  );
-}
-
-export function CardTitle({
-  className,
-  children,
-  ...props
-}: React.HTMLAttributes<HTMLHeadingElement>) {
-  return (
-    <h3
-      className={cn(
-        "font-medium text-[#f7f8f8] text-lg tracking-[-0.01em]",
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </h3>
-  );
-}
-
-export function CardDescription({
-  className,
-  children,
-  ...props
-}: React.HTMLAttributes<HTMLParagraphElement>) {
-  return (
-    <p
-      className={cn("text-[14px] text-[#a6a6a6] leading-relaxed", className)}
-      {...props}
-    >
-      {children}
-    </p>
   );
 }
 
@@ -106,17 +56,26 @@ export function CardContent({
   );
 }
 
-export function CardFooter({
+export function CardTitle({
   className,
   children,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
-    <div
-      className={cn("mt-4 pt-4 border-t border-white/5 flex items-center gap-2", className)}
-      {...props}
-    >
+    <h3 className={cn("font-semibold text-gray-900", className)} {...props}>
       {children}
-    </div>
+    </h3>
+  );
+}
+
+export function CardDescription({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLParagraphElement>) {
+  return (
+    <p className={cn("text-sm text-gray-500 leading-relaxed", className)} {...props}>
+      {children}
+    </p>
   );
 }
