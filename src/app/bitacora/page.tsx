@@ -1,164 +1,57 @@
 import { Metadata } from "next";
-import { Clock, Calendar, ArrowRight, BookOpen, Tag } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
-import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/Card";
-import { cn, formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Bitácora",
-  description: "Artículos, reflexiones y aprendizajes en el camino del Tai Chi. Filosofía, práctica y transformación personal.",
+  description: "Artículos y reflexiones sobre Tai Chi.",
 };
 
-const categories = ["Todas", "Filosofía", "Práctica", "Reflexiones", "Enseñanza"];
-
 const posts = [
-  {
-    slug: "el-emperador-el-general-y-los-soldados",
-    title: "El Emperador, el General y los Soldados: Cómo restaurar el orden interno",
-    excerpt: "Un principio del Tao que transformó la vida de Mauricio: el Corazón gobierna, la Mente ejecuta, el Cuerpo obedece.",
-    date: "2024-01-15",
-    category: "Filosofía",
-    tags: ["Tao", "Corazón", "Mente"],
-    readTime: 8,
-    featured: true,
-  },
-  {
-    slug: "las-armaduras-que-nos-protegen",
-    title: "Las armaduras que nos protegen nos impiden sentir",
-    excerpt: "Mauricio llegó al Tai Chi con muletas, órtesis y cintas. Daniel le dijo: 'No te sirven las armaduras.'",
-    date: "2024-12-28",
-    category: "Reflexiones",
-    tags: ["Armadura", "Sensibilidad"],
-    readTime: 6,
-    featured: true,
-  },
-  {
-    slug: "el-principio-del-no-esfuerzo-wu-wei",
-    title: "El principio del no-esfuerzo (Wu Wei): Cómo menos genera más",
-    excerpt: "Wu Wei no es no hacer nada. Es actuar sin fuerza, sin resistencia, en armonía con el Dao.",
-    date: "2024-12-20",
-    category: "Filosofía",
-    tags: ["Wu Wei", "Daoísmo"],
-    readTime: 5,
-    featured: false,
-  },
-  {
-    slug: "el-arbol-raices-firmes-ramas-flexibles",
-    title: "El árbol: raíces firmes para decisiones firmes, ramas flexibles para no quebrarse",
-    excerpt: "El ejercicio del árbol le enseñó a Mauricio que las decisiones deben ser firmes como el tronco, pero flexibles como las ramas.",
-    date: "2024-12-15",
-    category: "Práctica",
-    tags: ["Árbol", "Decisiones", "Flexibilidad"],
-    readTime: 7,
-    featured: false,
-  },
-  {
-    slug: "el-océano-de-posibilidades",
-    title: "El océano de posibilidades: Cuando la vida manda, no resistas",
-    excerpt: "Mis ideas son las olas del mar. Si las olas quieren golpear las rocas con fuerza, pero la masa del océano manda.",
-    date: "2024-12-10",
-    category: "Reflexiones",
-    tags: ["Océano", "Naturaleza", "Resistencia"],
-    readTime: 6,
-    featured: true,
-  },
-  {
-    slug: "la-serenidad-como-poder",
-    title: "La serenidad como poder ilimitado",
-    excerpt: "Ya no busco la tranquilidad ni la felicidad. Apareció algo desconocido: el poder ilimitado que entrega la serenidad.",
-    date: "2024-11-20",
-    category: "Filosofía",
-    tags: ["Serenidad", "Poder", "Quietud"],
-    readTime: 5,
-    featured: false,
-  },
+  { slug: "el-emperador-el-general-y-los-soldados", title: "El Emperador, el General y los Soldados", excerpt: "Un principio del Tao que transformó la vida de Mauricio.", date: "2024-01-15", category: "Filosofía", readTime: 8 },
+  { slug: "las-armaduras-que-nos-protegen", title: "Las armaduras que nos protegen nos impiden sentir", excerpt: "Mauricio llegó con muletas y órtesis. Daniel le dijo: 'No te sirven.'", date: "2024-12-28", category: "Reflexiones", readTime: 6 },
+  { slug: "el-principio-del-no-esfuerzo-wu-wei", title: "Wu Wei: Cómo menos genera más", excerpt: "Actuar sin resistencia, en armonía con el Dao.", date: "2024-12-20", category: "Filosofía", readTime: 5 },
+  { slug: "el-arbol-raices-firmes-ramas-flexibles", title: "El árbol: raíces firmes, ramas flexibles", excerpt: "Decisiones firmes como el tronco, flexibles como las ramas.", date: "2024-12-15", category: "Práctica", readTime: 7 },
 ];
-
-function formatDateShort(dateStr: string) {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("es-CL", { year: "numeric", month: "short", day: "numeric" });
-}
 
 export default function BitacoraPage() {
   return (
     <>
-      <section className="section bg-white dark:bg-neutral-950" aria-labelledby="bitacora-heading">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h1 id="bitacora-heading" className="font-heading font-bold text-neutral-900 dark:text-neutral-50 text-4xl sm:text-5xl lg:text-6xl mb-6">
-              Bitácora de <span className="text-gradient">transformación</span>
-            </h1>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8">
-              Reflexiones, aprendizajes y momentos de claridad en el camino del Tai Chi.
-              Escritos desde la práctica viva, no desde la teoría académica.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  className={cn(
-                    "px-4 py-2 text-sm font-medium rounded-full transition-all duration-200",
-                    cat === "Todas"
-                      ? "bg-brand-600 text-white shadow-[0_2px_8px_rgba(37,99,235,0.3)]"
-                      : "bg-neutral-100 text-neutral-700 hover:bg-brand-100 hover:text-brand-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-brand-900 dark:hover:text-brand-300"
-                  )}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          </div>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-zinc-100">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <Link href="/" className="text-[15px] font-semibold text-zinc-900">Experiencia Tai Chi</Link>
+          <Link href="/contacto" className="text-[13px] font-medium bg-zinc-900 text-white px-4 py-2 rounded-full hover:bg-zinc-800 transition-colors">Agendar</Link>
+        </div>
+      </nav>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      <section className="pt-28 pb-20">
+        <div className="max-w-4xl mx-auto px-6">
+          <Link href="/" className="text-[13px] text-zinc-400 hover:text-zinc-600 transition-colors mb-8 block">← Volver</Link>
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-zinc-900 mb-4">Bitácora</h1>
+          <p className="text-zinc-500 mb-10">Reflexiones y aprendizajes en el camino del Tai Chi.</p>
+
+          <div className="space-y-5">
             {posts.map((post) => (
-              <Card key={post.slug} interactive className="h-full flex flex-col">
-                <CardContent className="p-6 flex-1 flex flex-col">
-                  <div className="flex items-center gap-3 text-sm text-neutral-500 dark:text-neutral-400 mb-3">
-                    <time dateTime={post.date}>{formatDateShort(post.date)}</time>
-                    <span>·</span>
-                    <Clock className="w-4 h-4" />
-                    <span>{post.readTime} min</span>
-                  </div>
-                  <CardTitle className="text-xl line-clamp-2">{post.title}</CardTitle>
-                  <CardDescription className="mt-2 flex-1">{post.excerpt}</CardDescription>
-                  <div className="mt-4 pt-4 border-t border-neutral-200/50 dark:border-neutral-800/50 flex items-center justify-between">
-                    <Link
-                      href={`/bitacora/${post.slug}`}
-                      className="text-sm font-medium text-brand-600 dark:text-brand-400 hover:underline flex items-center gap-1"
-                    >
-                      Leer artículo
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
-                    <span className="text-xs text-neutral-400">{post.tags.slice(0, 2).join(", ")}</span>
-                  </div>
-                </CardContent>
-              </Card>
+              <Link key={post.slug} href={`/bitacora/${post.slug}`} className="block bg-white rounded-2xl border border-zinc-200 p-6 hover:border-zinc-300 hover:shadow-sm transition-all">
+                <div className="flex items-center gap-3 text-[12px] text-zinc-400 mb-2">
+                  <span>{post.date}</span>
+                  <span>·</span>
+                  <span>{post.readTime} min</span>
+                  <span>·</span>
+                  <span className="bg-zinc-100 px-2 py-0.5 rounded-full">{post.category}</span>
+                </div>
+                <h2 className="font-semibold text-zinc-900 mb-1">{post.title}</h2>
+                <p className="text-[14px] text-zinc-500">{post.excerpt}</p>
+              </Link>
             ))}
           </div>
-
-          {/* Newsletter CTA */}
-          <section className="mt-20 p-8 lg:p-12 bg-neutral-900 dark:bg-neutral-100 rounded-3xl text-center">
-            <h2 className="font-heading font-bold text-neutral-50 dark:text-neutral-900 text-2xl sm:text-3xl mb-4">
-              ¿No quieres perderte nada?
-            </h2>
-            <p className="text-neutral-300 dark:text-neutral-600 max-w-xl mx-auto mb-6">
-              Recibe cada nuevo artículo directo en tu bandeja. Sin spam. Solo Tai Chi.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" action="/api/newsletter" method="POST">
-              <input
-                type="email"
-                placeholder="tu@email.com"
-                className="flex-1 px-4 py-3 rounded-xl bg-white/10 dark:bg-neutral-900/50 border border-neutral-700/50 dark:border-neutral-300/50 text-neutral-50 dark:text-neutral-900 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-500"
-                required
-              />
-              <Button type="submit" size="lg">
-                Suscribirme
-              </Button>
-            </form>
-          </section>
         </div>
       </section>
+
+      <footer className="border-t border-zinc-100 py-10">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <span className="text-[12px] text-zinc-400">© {new Date().getFullYear()} Experiencia Tai Chi</span>
+        </div>
+      </footer>
     </>
   );
 }
