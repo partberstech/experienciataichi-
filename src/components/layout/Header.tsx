@@ -10,11 +10,11 @@ import { Button } from "@/components/ui/Button";
 
 const navigation = [
   { name: "Inicio", href: "/" },
-  { name: "El Maestro", href: "/camino" },
+  { name: "La Historia", href: "/mundo-scroll" },
+  { name: "El Camino", href: "/camino" },
   { name: "Testimonio", href: "/testimonio" },
-  { name: "Bitácora", href: "/bitacora" },
   { name: "Práctica", href: "/practica" },
-  { name: "Documentos", href: "/documentos" },
+  { name: "Bitácora", href: "/bitacora" },
   { name: "Contacto", href: "/contacto" },
 ];
 

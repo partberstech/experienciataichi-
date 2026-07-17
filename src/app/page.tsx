@@ -33,15 +33,14 @@ export default function HomePage() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
               <Button size="xl" asChild>
-                <Link href="/camino">
-                  Conoce mi historia
+                <Link href="/mundo-scroll">
+                  Explora la historia
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
               <Button variant="outline" size="xl" asChild>
-                <Link href="/testimonio">
-                  <Play className="w-5 h-5" />
-                  Ver testimonio
+                <Link href="/camino">
+                  Conoce mi camino
                 </Link>
               </Button>
             </div>
