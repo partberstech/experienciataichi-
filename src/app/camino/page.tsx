@@ -271,7 +271,7 @@ export default function CaminoPage() {
                 Descubre la práctica
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button variant="secondary" size="lg" asChild>
               <Link href="/contacto">
                 Agenda una sesión
               </Link>

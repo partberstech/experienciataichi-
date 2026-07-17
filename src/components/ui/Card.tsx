@@ -2,64 +2,46 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const cardVariants = cva(
-  "relative overflow-hidden transition-all duration-300 ease-spring",
+  "transition-all duration-300",
   {
     variants: {
       variant: {
         default:
-          "bg-white/80 dark:bg-neutral-950/80 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-800/50 shadow-card hover:shadow-card-hover hover:-translate-y-1",
+          "bg-white/[0.02] border border-white/[0.08] rounded-xl",
         elevated:
-          "bg-white/90 dark:bg-neutral-900/90 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-800/50 shadow-elevated",
-        flat:
-          "bg-white/50 dark:bg-neutral-950/50 backdrop-blur-sm border border-neutral-200/50 dark:border-neutral-800/50",
+          "bg-white/[0.03] border border-white/[0.08] rounded-xl shadow-[0_0_40px_rgba(0,0,0,0.3)]",
         glass:
-          "glass",
-      },
-      padding: {
-        none: "",
-        sm: "p-4",
-        md: "p-6",
-        lg: "p-8",
-        xl: "p-10",
-      },
-      radius: {
-        none: "",
-        sm: "rounded-lg",
-        md: "rounded-xl",
-        lg: "rounded-2xl",
-        xl: "rounded-3xl",
-        full: "rounded-full",
-      },
-      interactive: {
-        true: "cursor-pointer",
-        false: "",
+          "bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] rounded-xl",
+        glow:
+          "bg-white/[0.02] border border-[#5e6ad2]/30 rounded-xl shadow-[0_0_30px_rgba(94,106,210,0.1)]",
       },
     },
     defaultVariants: {
       variant: "default",
-      padding: "md",
-      radius: "lg",
-      interactive: true,
     },
   }
 );
 
 export interface CardProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {}
+    VariantProps<typeof cardVariants> {
+  interactive?: boolean;
+}
 
 export function Card({
   className,
   variant,
-  padding,
-  radius,
-  interactive,
+  interactive = false,
   children,
   ...props
 }: CardProps) {
   return (
     <div
-      className={cn(cardVariants({ variant, padding, radius, interactive, className }))}
+      className={cn(
+        cardVariants({ variant }),
+        interactive && "cursor-pointer hover:bg-white/[0.04] hover:border-white/[0.12] hover:shadow-[0_0_60px_rgba(0,0,0,0.4)]",
+        className
+      )}
       {...props}
     >
       {children}
@@ -87,7 +69,7 @@ export function CardTitle({
   return (
     <h3
       className={cn(
-        "font-heading font-semibold text-neutral-900 dark:text-neutral-50",
+        "font-medium text-[#f7f8f8] text-lg tracking-[-0.01em]",
         className
       )}
       {...props}
@@ -104,10 +86,7 @@ export function CardDescription({
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn(
-        "text-sm text-neutral-600 dark:text-neutral-400 mt-1",
-        className
-      )}
+      className={cn("text-[14px] text-[#a6a6a6] leading-relaxed", className)}
       {...props}
     >
       {children}
@@ -134,7 +113,7 @@ export function CardFooter({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("mt-4 pt-4 border-t border-neutral-200/50 dark:border-neutral-800/50 flex items-center gap-2", className)}
+      className={cn("mt-4 pt-4 border-t border-white/5 flex items-center gap-2", className)}
       {...props}
     >
       {children}

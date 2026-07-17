@@ -188,7 +188,7 @@ export default function TestimonioPage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" asChild><Link href="/contacto">Agenda tu sesión</Link></Button>
-            <Button variant="outline" size="lg" asChild><Link href="/camino">Conoce la historia completa</Link></Button>
+            <Button variant="secondary" size="lg" asChild><Link href="/camino">Conoce la historia completa</Link></Button>
           </div>
         </div>
       </section>

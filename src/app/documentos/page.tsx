@@ -155,7 +155,7 @@ export default function DocumentosPage() {
                           <span>{guide.level}</span>
                         </div>
                       </div>
-                      <Button size="sm" variant="outline" asChild>
+                      <Button size="sm" variant="secondary" asChild>
                         <a href={guide.download} download>
                           <Download className="w-4 h-4" />
                         </a>
@@ -260,7 +260,7 @@ export default function DocumentosPage() {
                 Agenda una sesión
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button variant="secondary" size="lg" asChild>
               <Link href="/practica">
                 Explora la práctica
               </Link>

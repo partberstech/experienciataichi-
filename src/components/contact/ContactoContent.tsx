@@ -124,7 +124,7 @@ export function ContactoContent() {
                     </p>
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-neutral-500 dark:text-neutral-400">Sábado, 10:00–12:00</span>
-                      <Button size="sm" variant="outline">
+                      <Button size="sm" variant="secondary">
                         Inscribirme
                       </Button>
                     </div>

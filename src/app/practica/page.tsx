@@ -260,7 +260,7 @@ export default function PracticaPage() {
             </div>
 
             <div className="text-center mt-8">
-              <Button variant="outline" size="lg">
+              <Button variant="secondary" size="lg">
                 Ver todas las lecciones
                 <ChevronRight className="w-5 h-5" />
               </Button>
@@ -285,7 +285,7 @@ export default function PracticaPage() {
                 Agenda una sesión
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
+            <Button variant="secondary" size="lg" asChild>
               <Link href="/camino">
                 Conoce la historia
               </Link>
