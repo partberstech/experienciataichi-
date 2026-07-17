@@ -2,273 +2,270 @@ import { Metadata } from "next";
 import { ArrowLeft, FileText, Download, Eye, BookOpen, Clock, FileType } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
-import { Card, CardContent, CardTitle, CardDescription, CardHeader } from "@/components/ui/Card";
-import { cn } from "@/lib/utils";
+import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/Card";
 
 export const metadata: Metadata = {
   title: "Documentos",
-  description: "Guías PDF, protocolos de práctica, documentos de referencia y materiales de estudio para profundizar en el Tai Chi. Descarga gratuita.",
+  description: "Guías PDF, videos y recursos descargables para tu práctica de Tai Chi y Chi Kung.",
 };
 
-const documents = [
+const guides = [
   {
-    id: "zhan-zhuang-100-dias",
-    title: "Zhan Zhuang: Protocolo 100 Días",
-    description: "Plan progresivo día a día para establecer la práctica de Zhan Zhuang. Incluye registro diario, hitos, correcciones comunes y criterios de avance.",
-    category: "Protocolo de Práctica",
-    format: "PDF",
-    pages: 24,
-    size: "2.3 MB",
-    readTime: "Referencia continua",
-    featured: true,
-    downloadUrl: "/docs/zhan-zhuang-100-dias.pdf",
-    previewUrl: "/docs/preview/zhan-zhuang-100-dias.pdf",
-    tags: ["Zhan Zhuang", "Principiantes", "Progresión", "Registro"],
+    title: "Guía de Zhan Zhuang",
+    description: "Postura fundamental del Tai Chi. Instrucciones paso a paso para principiantes y avanzados.",
+    pages: 12,
+    level: "Todos los niveles",
+    icon: "📄",
+    download: "#",
   },
   {
-    id: "taichi-fundamentos",
-    title: "Fundamentos del Tai Chi Chuan",
-    description: "Documento de referencia con los 13 principios esenciales, los 8 trigramas, los 5 elementos y su aplicación en la forma. Base teórica para practicantes serios.",
-    category: "Teoría & Referencia",
-    format: "PDF",
-    pages: 38,
-    size: "4.1 MB",
-    readTime: "2-3 horas",
-    featured: true,
-    downloadUrl: "/docs/taichi-fundamentos.pdf",
-    previewUrl: "/docs/preview/taichi-fundamentos.pdf",
-    tags: ["Teoría", "13 Principios", "8 Trigramas", "5 Elementos", "Referencia"],
+    title: "El Árbol: Guía de práctica",
+    description: "El ejercicio que transformó las decisiones de Mauricio. Raíces firmes, ramas flexibles.",
+    pages: 8,
+    level: "Todos los niveles",
+    icon: "🌳",
+    download: "#",
   },
   {
-    id: "forma-10-simbolos",
-    title: "Guía Visual: Los 10 Símbolos",
-    description: "Desglose fotográfico paso a paso de cada símbolo. Incluye nombres en chino, pinyin, significado, alineación estructural, intención (Yi) y errores comunes.",
-    category: "Guía de Forma",
-    format: "PDF",
-    pages: 42,
-    size: "8.7 MB",
-    readTime: "Estudio continuo",
-    featured: false,
-    downloadUrl: "/docs/forma-10-simbolos.pdf",
-    previewUrl: "/docs/preview/forma-10-simbolos.pdf",
-    tags: ["Forma", "Visual", "Paso a paso", "Correcciones"],
+    title: "Principios del Tao para la vida diaria",
+    description: "Wu Wei, el Emperador-General-Soldados, y otros principios aplicados al día a día.",
+    pages: 15,
+    level: "Intermedio",
+    icon: "☯️",
+    download: "#",
   },
   {
-    id: "chan-si-gong",
-    title: "Chan Si Gong: Enrollado de Seda Completo",
-    description: "Protocolo completo de ejercicios de espiral: simples, dobles, coordinados, cuerpo entero. Incluye variaciones terapéuticas y marciales.",
-    category: "Protocolo de Práctica",
-    format: "PDF",
-    pages: 31,
-    size: "3.8 MB",
-    readTime: "Práctica continua",
-    featured: false,
-    downloadUrl: "/docs/chan-si-gong.pdf",
-    previewUrl: "/docs/preview/chan-si-gong.pdf",
-    tags: ["Chan Si Gong", "Espiral", "Qi Gong", "Intermedio"],
-  },
-  {
-    id: "tui-shou-protocolo",
-    title: "Tui Shou: Protocolo de Empuje de Manos",
-    description: "Metodología progresiva desde Tui Shou fijo de un brazo hasta movible de dos brazos. Criterios de avance, principios de Ting Jin y aplicaciones.",
-    category: "Práctica en Pareja",
-    format: "PDF",
-    pages: 28,
-    size: "3.2 MB",
-    readTime: "Práctica supervisada",
-    featured: false,
-    downloadUrl: "/docs/tui-shou-protocolo.pdf",
-    previewUrl: "/docs/preview/tui-shou-protocolo.pdf",
-    tags: ["Tui Shou", "Pareja", "Ting Jin", "Avanzado"],
-  },
-  {
-    id: "rutina-diaria-20min",
-    title: "Rutina Diaria 20 Minutos - Hoja de Práctica",
-    description: "Hoja imprimible de una página: calentamiento, Zhan Zhuang, forma 8 movimientos, cierre. Con casillas de verificación para 30 días.",
-    category: "Herramienta Diaria",
-    format: "PDF",
-    pages: 2,
-    size: "450 KB",
-    readTime: "Uso diario",
-    featured: true,
-    downloadUrl: "/docs/rutina-diaria-20min.pdf",
-    previewUrl: "/docs/preview/rutina-diaria-20min.pdf",
-    tags: ["Diario", "Imprimible", "Seguimiento", "Todos los niveles"],
-  },
-  {
-    id: "taichi-salud-cervical",
-    title: "Tai Chi para Salud Cervical: Protocolo Terapéutico",
-    description: "Adaptación específica para hernia cervical, pérdida de sensibilidad, dolor crónico. Ejercicios seguros, progresión médica, contraindicaciones.",
-    category: "Aplicación Terapéutica",
-    format: "PDF",
-    pages: 19,
-    size: "2.1 MB",
-    readTime: "Estudio + práctica",
-    featured: false,
-    downloadUrl: "/docs/taichi-salud-cervical.pdf",
-    previewUrl: "/docs/preview/taichi-salud-cervical.pdf",
-    tags: ["Terapéutico", "Cervical", "Hernia", "Rehabilitación"],
-  },
-  {
-    id: "diario-practica",
-    title: "Diario de Práctica: 365 Días",
-    description: "Plantilla anual para registrar práctica diaria: tiempo, calidad, sensaciones, insights, obstáculos. Incluye revisiones mensuales y anuales.",
-    category: "Herramienta de Seguimiento",
-    format: "PDF",
-    pages: 40,
-    size: "1.8 MB",
-    readTime: "Uso anual",
-    featured: false,
-    downloadUrl: "/docs/diario-practica-365.pdf",
-    previewUrl: "/docs/preview/diario-practica-365.pdf",
-    tags: ["Diario", "Seguimiento", "Reflexión", "Año completo"],
+    title: "Chi Kung matutino",
+    description: "Rutina de 15 minutos para comenzar el día con energía y claridad.",
+    pages: 6,
+    level: "Todos los niveles",
+    icon: "☀️",
+    download: "#",
   },
 ];
 
-function DocumentCard({ doc }: { doc: any }) {
-  return (
-    <Card interactive className="h-full flex flex-col">
-      <CardHeader className="p-5 pb-0">
-        <div className="flex items-start justify-between gap-3 mb-3">
-          <span className="px-2 py-1 text-xs font-medium rounded-full bg-brand-100 text-brand-700 dark:bg-brand-900 dark:text-brand-300">
-            {doc.category}
-          </span>
-          {doc.featured && (
-            <span className="px-2 py-1 text-xs font-medium rounded-full bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300">
-              Destacado
-            </span>
-          )}
-        </div>
-        <CardTitle className="text-lg mb-2">{doc.title}</CardTitle>
-        <CardDescription className="text-base mb-4">{doc.description}</CardDescription>
-      </CardHeader>
-      <CardContent className="p-5 pt-0 flex-1 flex flex-col">
-        <div className="flex flex-wrap items-center gap-3 text-sm text-neutral-500 dark:text-neutral-400 mb-4">
-          <span className="flex items-center gap-1">
-            <FileType className="w-3.5 h-3.5" />
-            {doc.format}
-          </span>
-          <span className="flex items-center gap-1">
-            <FileText className="w-3.5 h-3.5" />
-            {doc.pages} págs
-          </span>
-          <span className="flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5" />
-            {doc.size}
-          </span>
-        </div>
+const videos = [
+  {
+    title: "Zhan Zhuang: La postura que todo lo cambia",
+    duration: "15:30",
+    description: "Instrucciones detalladas de la postura fundamental.",
+    level: "Inicial",
+  },
+  {
+    title: "El Árbol: Enraizamiento y flexibilidad",
+    duration: "12:00",
+    description: "El ejercicio que Mauricio relacionó con la toma de decisiones.",
+    level: "Todos",
+  },
+  {
+    title: "Chi Kung: Respiración y energía",
+    duration: "20:00",
+    description: "Secuencia completa de Chi Kung para activar el cuerpo.",
+    level: "Todos",
+  },
+  {
+    title: "Forma 24: Los primeros pasos",
+    duration: "25:00",
+    description: "Los primeros movimientos de la forma corta de Tai Chi.",
+    level: "Intermedio",
+  },
+];
 
-        <div className="flex flex-wrap gap-1 mb-4">
-          {doc.tags.slice(0, 4).map((tag: string, i: number) => (
-            <span
-              key={i}
-              className="px-2 py-0.5 text-xs rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400"
-            >
-              {tag}
-            </span>
-          ))}
-          {doc.tags.length > 4 && (
-            <span className="px-2 py-0.5 text-xs rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-500">
-              +{doc.tags.length - 4}
-            </span>
-          )}
-        </div>
-
-        <div className="flex items-center gap-2 mt-auto pt-4 border-t border-neutral-200/50 dark:border-neutral-800/50">
-          <Button variant="outline" size="sm" className="flex-1" asChild>
-            <Link href={doc.previewUrl} target="_blank" rel="noopener noreferrer">
-              <Eye className="w-4 h-4 mr-1.5" />
-              Vista previa
-            </Link>
-          </Button>
-          <Button size="sm" className="flex-1" asChild>
-            <a href={doc.downloadUrl} download>
-              <Download className="w-4 h-4 mr-1.5" />
-              Descargar
-            </a>
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
+const articles = [
+  {
+    title: "La espasticidad y el Tai Chi: Un caso clínico",
+    author: "Daniel Berniel",
+    description: "Análisis del proceso de Mauricio desde la perspectiva de su instructor y terapeuta.",
+    type: "Artículo",
+  },
+  {
+    title: "Wu Wei y la recuperación neurológica",
+    author: "Mauricio Ochoa",
+    description: "Cómo el principio del no-esfuerzo ayudó en la recuperación de la espasticidad.",
+    type: "Artículo",
+  },
+  {
+    title: "El Tao Te Ching: Guía de lectura",
+    description: "Selección de capítulos relevantes para la práctica de Tai Chi.",
+    type: "Guía",
+  },
+];
 
 export default function DocumentosPage() {
   return (
     <>
-      <section className="section bg-white dark:bg-neutral-950" aria-labelledby="documentos-heading">
-        <div className="container mx-auto px-4">
+      {/* Hero */}
+      <section className="section bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 text-white">
+        <div className="container mx-auto px-4 py-20">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-brand-600 dark:hover:text-brand-400 mb-8"
+            className="inline-flex items-center gap-2 text-sm font-medium text-neutral-400 hover:text-brand-400 transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Volver al inicio
           </Link>
 
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h1 id="documentos-heading" className="font-heading font-bold text-neutral-900 dark:text-neutral-50 text-4xl sm:text-5xl lg:text-6xl mb-6">
-              Biblioteca de <span className="text-gradient">documentos</span>
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-600/20 border border-brand-600/30 text-brand-300 text-sm font-medium mb-6">
+              <FileText className="w-4 h-4" />
+              <span>Recursos</span>
+            </div>
+
+            <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl mb-6">
+              Documentos y{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600">
+                recursos
+              </span>
             </h1>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400 mb-8">
-              Guías PDF, protocolos de práctica, documentos de referencia y materiales de estudio.
-              Descarga gratuita. Para estudio personal y práctica responsable.
+
+            <p className="text-lg text-neutral-300 leading-relaxed">
+              Guías, videos y artículos para acompañar tu práctica de Tai Chi y Chi Kung.
+              Todo lo que necesitas para comenzar o profundizar.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-neutral-500 dark:text-neutral-500">
-              <div className="flex items-center gap-2">
-                <FileText className="w-5 h-5 text-brand-500" />
-                <span>8 documentos</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Download className="w-5 h-5 text-brand-500" />
-                <span>Descarga directa</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Eye className="w-5 h-5 text-brand-500" />
-                <span>Vista previa online</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-brand-500" />
-                <span>Actualizado 2024</span>
-              </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Guides */}
+      <section className="section bg-white dark:bg-neutral-950" id="guias">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="font-heading font-bold text-neutral-900 dark:text-neutral-50 text-3xl mb-4">
+              Guías PDF
+            </h2>
+            <p className="text-neutral-600 dark:text-neutral-400 mb-8">
+              Documentos descargables con instrucciones detalladas para tu práctica.
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {guides.map((guide, i) => (
+                <Card key={i} interactive>
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="text-3xl">{guide.icon}</div>
+                      <div className="flex-1">
+                        <h3 className="font-heading font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
+                          {guide.title}
+                        </h3>
+                        <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-3">
+                          {guide.description}
+                        </p>
+                        <div className="flex items-center gap-4 text-xs text-neutral-500 dark:text-neutral-400">
+                          <span>{guide.pages} páginas</span>
+                          <span>{guide.level}</span>
+                        </div>
+                      </div>
+                      <Button size="sm" variant="outline" asChild>
+                        <a href={guide.download} download>
+                          <Download className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {documents.map((doc) => (
-              <DocumentCard key={doc.id} doc={doc} />
-            ))}
-          </div>
-
-          {/* Usage Notice */}
-          <section className="mt-16 p-6 lg:p-8 bg-neutral-50 dark:bg-neutral-900 rounded-2xl border border-neutral-200/50 dark:border-neutral-800/50">
-            <h2 className="font-heading font-semibold text-neutral-900 dark:text-neutral-50 text-xl mb-4 flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-brand-500" />
-              Uso responsable
+      {/* Videos */}
+      <section className="section bg-neutral-50 dark:bg-neutral-900/50" id="videos">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="font-heading font-bold text-neutral-900 dark:text-neutral-50 text-3xl mb-4">
+              Videos
             </h2>
-            <div className="prose prose-neutral dark:prose-invert max-w-none text-sm">
-              <ul className="space-y-2">
-                <li>Estos documentos son <strong>material de apoyo</strong>, no sustituyen la enseñanza presencial de un instructor calificado.</li>
-                <li>La práctica de Tai Chi conlleva <strong>responsabilidad personal</strong>. Escucha a tu cuerpo. No fuerces. Consulta a tu médico si tienes condiciones preexistentes.</li>
-                <li>Permitido: <strong>uso personal, estudio, impresión para práctica propia</strong>.</li>
-                <li>No permitido: <strong>redistribución comercial, venta, modificación, uso en formaciones pagadas sin autorización</strong>.</li>
-                <li>¿Quieres usar esto en tu escuela/taller? <a href="/contacto" className="text-brand-600 dark:text-brand-400 hover:underline">Escríbeme</a>.</li>
-              </ul>
-            </div>
-          </section>
-
-          {/* Request Section */}
-          <section className="mt-12 text-center">
-            <h2 className="font-heading font-bold text-neutral-900 dark:text-neutral-50 text-2xl sm:text-3xl mb-4">
-              ¿Buscas algo que no está aquí?
-            </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 mb-6 max-w-xl mx-auto">
-              Estoy creando nuevos materiales constantemente. Si necesitas un tema específico, dímelo.
+            <p className="text-neutral-600 dark:text-neutral-400 mb-8">
+              Clases grabadas para practicar en cualquier momento y lugar.
             </p>
-            <Button variant="outline" size="lg" asChild>
-              <Link href="/contacto#sugerencias">Sugerir documento</Link>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {videos.map((video, i) => (
+                <Card key={i} interactive>
+                  <div className="aspect-video bg-neutral-100 dark:bg-neutral-800 rounded-t-2xl flex items-center justify-center relative">
+                    <Eye className="w-12 h-12 text-neutral-400" />
+                    <div className="absolute bottom-2 right-2 px-2 py-1 bg-black/70 rounded text-xs text-white">
+                      {video.duration}
+                    </div>
+                  </div>
+                  <CardContent className="p-4">
+                    <h3 className="font-medium text-neutral-900 dark:text-neutral-100 text-sm mb-1">
+                      {video.title}
+                    </h3>
+                    <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-2">
+                      {video.description}
+                    </p>
+                    <span className="text-xs text-brand-600 dark:text-brand-400">{video.level}</span>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Articles */}
+      <section className="section bg-white dark:bg-neutral-950">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="font-heading font-bold text-neutral-900 dark:text-neutral-50 text-3xl mb-4">
+              Artículos y lecturas
+            </h2>
+            <p className="text-neutral-600 dark:text-neutral-400 mb-8">
+              Textos para profundizar en la comprensión del Tai Chi y sus principios.
+            </p>
+
+            <div className="space-y-4">
+              {articles.map((article, i) => (
+                <Card key={i}>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="px-2 py-1 text-xs font-medium rounded-full bg-brand-100 text-brand-700 dark:bg-brand-900/30 dark:text-brand-300">
+                        {article.type}
+                      </span>
+                      {article.author && (
+                        <span className="text-xs text-neutral-500 dark:text-neutral-400">
+                          por {article.author}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="font-heading font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
+                      {article.title}
+                    </h3>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                      {article.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section bg-neutral-900 text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="font-heading font-bold text-3xl mb-6">
+            ¿Necesitas guía personalizada?
+          </h2>
+          <p className="text-lg text-neutral-300 max-w-2xl mx-auto mb-8">
+            Estos recursos son el comienzo. Para un acompañamiento personalizado,
+            agenda una sesión con Mauricio.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button size="lg" asChild>
+              <Link href="/contacto">
+                Agenda una sesión
+              </Link>
             </Button>
-          </section>
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/practica">
+                Explora la práctica
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
     </>

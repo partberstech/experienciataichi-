@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, TreePine, Heart, Shield, Sparkles, Quote } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/Card";
@@ -11,52 +11,60 @@ export const metadata: Metadata = {
 
 const timeline = [
   {
+    year: "Juventud",
+    title: "Deportista de alto rendimiento",
+    category: "Orígenes",
+    description: "Practicante de remo, seleccionado nacional. Vida activa, proyectos, ilusión de control. El cuerpo era una máquina, no un templo.",
+    icon: "🚣",
+  },
+  {
     year: "2008",
-    title: "La Crisis",
+    title: "La crisis cervical",
     category: "Crisis",
-    description:
-      "Hernia cervical C5-C6 severa con compresión medular. Pérdida de sensibilidad en manos y brazos. Los médicos advierten: cirugía urgente o parálisis permanente.",
+    description: "Un día despertó con un dedo dormido. En semanas, las vértebras C3, C4 y C5 se aplastaron. Los médicos advirtieron: cirugía urgente o parálisis permanente.",
     icon: "⚡",
   },
   {
     year: "2009",
-    title: "La Decisión",
-    category: "Punto de inflexión",
-    description:
-      "Rechazo la cirugía. Busco alternativas. Encuentro el Tai Chi Chuan estilo Yang. Primera clase: el cuerpo recuerda algo que la mente olvidó.",
-    icon: "🧭",
+    title: "La operación y la muerte simbólica",
+    category: "Renacimiento",
+    description: "8 horas de cirugía. Le salvaron la vida, pero las células y neuronas murieron. Los especialistas dictaminaron: no se puede operar, no se puede descomprimir, no se puede eliminar la espasticidad.",
+    icon: "🌅",
+  },
+  {
+    year: "2009-2010",
+    title: "El primer paso: sacar las armaduras",
+    category: "Transformación",
+    description: "Daniel Berniel, instructor de Tai Chi, le dijo: 'Mauricio, no te sirven las armaduras. Tienes que sacarte todas las armaduras.' Muletas, órtesis, cintas... todo afuera.",
+    icon: "🔓",
   },
   {
     year: "2010-2014",
-    title: "La Práctica Diaria",
+    title: "La práctica diaria y el árbol",
     category: "Disciplina",
-    description:
-      "Práctica diaria de 2-4 horas. Zhan Zhuang, forma larga, empuje de manos. Recuperación gradual de sensibilidad. El dolor se transforma en maestro.",
-    icon: "🥋",
+    description: "Práctica diaria de Tai Chi y Chi Kung. El ejercicio del árbol le enseñó: raíces firmes para decisiones firmes, ramas flexibles para no quebrarse en la tormenta.",
+    icon: "🌳",
   },
   {
     year: "2015",
-    title: "Certificación y Enseñanza",
+    title: "La espasticidad desaparece",
+    category: "Milagro",
+    description: "Después de años de práctica rigurosa y observación interna, la espasticidad que los médicos dijeron era incurable se eliminó por completo.",
+    icon: "✨",
+  },
+  {
+    year: "2022",
+    title: "Certificación y enseñanza",
     category: "Transmisión",
-    description:
-      "Certificación como instructor. Primeros alumnos. Comienzo a transmitir lo que me salvó. La enseñanza se convierte en práctica superior.",
+    description: "Se certifica como instructor de Tai Chi. Comienza a enseñar lo que le salvó. La enseñanza se convierte en práctica superior.",
     icon: "🎓",
   },
   {
-    year: "2018",
-    title: "Primer TAIK Tai Chi",
-    category: "Expansión",
-    description:
-      "Co-fundador de AIK Tai Chi. Talleres internacionales. Formación de instructores. El círculo se amplía: Chile, Argentina, España.",
-    icon: "🌎",
-  },
-  {
-    year: "2024",
-    title: "Experiencia Tai Chi",
-    category: "Renacimiento",
-    description:
-      "Lanzamiento de esta plataforma. Testimonio en video. Bitácora de transformación. Prácticas guiadas. El legado continúa.",
-    icon: "✨",
+    year: "Hoy",
+    title: "Volar en vez de correr",
+    category: "Serenidad",
+    description: "50% menos medicamentos. Sistema nervioso alineado. 'Antes podía correr, hoy día puedo volar. Si me piden elegir, prefiero volar.'",
+    icon: "🕊️",
   },
 ];
 
@@ -64,174 +72,209 @@ export default function CaminoPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center pt-16 bg-gradient-to-b from-brand-50/50 to-transparent dark:from-brand-950/20 dark:to-transparent">
-        <div className="container mx-auto px-4 py-20 text-center">
+      <section className="section bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 text-white">
+        <div className="container mx-auto px-4 py-20">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-brand-600 dark:hover:text-brand-400 mb-8"
+            className="inline-flex items-center gap-2 text-sm font-medium text-neutral-400 hover:text-brand-400 transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Volver al inicio
           </Link>
-          <span className="inline-flex items-center gap-2 text-sm font-medium text-brand-600 dark:text-brand-400 mb-4">
-            MAURICIO OCHOA · EL CAMINO
-          </span>
-          <h1 className="font-heading font-bold text-neutral-900 dark:text-neutral-50 text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight mb-6">
-            El camino del <span className="text-gradient">maestro</span>
-          </h1>
-          <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-            No elegí el Tai Chi. El Tai Chi me eligió a mí. Esta es la historia de cómo una crisis
-            que pudo costarme la vida se convirtió en el portal a mi verdadera naturaleza.
-          </p>
+
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-600/20 border border-brand-600/30 text-brand-300 text-sm font-medium mb-6">
+              <Heart className="w-4 h-4" />
+              <span>Biografía</span>
+            </div>
+
+            <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl mb-6">
+              El camino de{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-600">
+                Mauricio Ochoa
+              </span>
+            </h1>
+
+            <p className="text-lg text-neutral-300 leading-relaxed">
+              De deportista de alto rendimiento a paciente con diagnóstico de enfermedad catastrófica.
+              De parálisis casi total a instructor de Tai Chi. Una historia de muerte simbólica y renacimiento.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="section bg-white dark:bg-neutral-950" aria-labelledby="timeline-heading">
+      {/* Bio */}
+      <section className="section bg-white dark:bg-neutral-950">
         <div className="container mx-auto px-4">
-          <div className="relative max-w-3xl mx-auto">
-            {/* Vertical line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-brand-200 via-brand-400 to-brand-200 dark:from-brand-800 dark:via-brand-600 dark:to-brand-800 -translate-x-1/2" aria-hidden="true" />
-
-            {timeline.map((item, index) => (
-              <div
-                key={item.year}
-                className={`relative mb-16 ${index % 2 === 0 ? "pl-[55%]" : "pr-[55%] text-right"}`}
-              >
-                {/* Dot on timeline */}
-                <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
-                  <div className="w-4 h-4 rounded-full bg-brand-500 border-4 border-white dark:border-neutral-950 shadow-lg" />
-                  <div className="absolute -top-1 left-1/2 -translate-x-1/2 text-xs font-mono text-brand-600 dark:text-brand-400 whitespace-nowrap">
-                    {item.year}
-                  </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-start">
+              {/* Left: Bio text */}
+              <div>
+                <h2 className="font-heading font-bold text-neutral-900 dark:text-neutral-50 text-2xl mb-6">
+                  La historia
+                </h2>
+                <div className="space-y-4 text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  <p>
+                    Mauricio Ochoa es originario de Valdivia, Chile. En su juventud fue deportista de alto rendimiento,
+                    practicante de remo y seleccionado nacional. Vivió años con una vida activa, llena de proyectos,
+                    mucha ilusión de control, mucho estrés y confusión emocional.
+                  </p>
+                  <p>
+                    En 2008, todo cambió. Un día despertó con un dedo dormido. Las vértebras C3, C4 y C5
+                    se aplastaron de manera agresiva. Los médicos le dijeron que la operación era para salvar
+                    la vida, con altas posibilidades de quedar parapléjico.
+                  </p>
+                  <p>
+                    La operación duró 8 horas. Le salvaron la vida, pero las células y neuronas murieron.
+                    Los especialistas dictaminaron: no se puede operar, no se puede descomprimir la médula,
+                    no se puede eliminar la espasticidad. Fue declarado inválido al 100% por enfermedad catastrófica.
+                  </p>
+                  <p>
+                    Pero Mauricio no se rindió. Comenzó a preguntarse <em className="text-neutral-900 dark:text-neutral-100">&ldquo;¿cómo lo soluciono?&rdquo;</em> en vez de
+                    <em className="text-neutral-900 dark:text-neutral-100">&ldquo;¿por qué me pasa?&rdquo;</em>. El &ldquo;cómo&rdquo; lo inspiró. El &ldquo;por qué&rdquo; lo victimizaba.
+                  </p>
+                  <p>
+                    Un amigo le sugirió practicar Tai Chi. Apareció Daniel Berniel, instructor y terapeuta,
+                    quien le dijo: <em className="text-neutral-900 dark:text-neutral-100">&ldquo;Mauricio, no te sirven las armaduras. Tienes que sacarte todas las armaduras.&rdquo;</em>
+                  </p>
+                  <p>
+                    Juntos desarrollaron un programa específico para trabajar la espasticidad. Mauricio encontró
+                    en los principios del Tao una lógica empírica que conectó con su proceso de sanación.
+                    Hoy, 15 años después, eliminó la espasticidad por completo y redujo sus medicamentos a la mitad.
+                  </p>
                 </div>
+              </div>
 
-                {/* Card */}
-                <Card interactive className="relative">
+              {/* Right: Key facts */}
+              <div className="space-y-6">
+                <Card variant="elevated">
                   <CardContent className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="text-2xl">{item.icon}</span>
-                      <span className="px-2 py-1 text-xs font-medium rounded-full bg-brand-100 text-brand-700 dark:bg-brand-900 dark:text-brand-300">
-                        {item.category}
-                      </span>
+                    <h3 className="font-heading font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
+                      Datos clave
+                    </h3>
+                    <div className="space-y-3">
+                      {[
+                        { label: "Nombre", value: "Mauricio Ochoa" },
+                        { label: "Ubicación", value: "Valdivia, Chile" },
+                        { label: "Formación", value: "Magister en Gobierno y Gerencia Pública, U. de Chile" },
+                        { label: "Diagnóstico", value: "Mielopatía Cervical (C3-C4-C5)" },
+                        { label: "Instructor", value: "Daniel Berniel" },
+                        { label: "Estilo", value: "Tai Chi Chuan Yang + Chi Kung" },
+                      ].map((fact, i) => (
+                        <div key={i} className="flex justify-between items-center py-2 border-b border-neutral-100 dark:border-neutral-800 last:border-0">
+                          <span className="text-sm text-neutral-500 dark:text-neutral-400">{fact.label}</span>
+                          <span className="text-sm font-medium text-neutral-900 dark:text-neutral-100 text-right">{fact.value}</span>
+                        </div>
+                      ))}
                     </div>
-                    <CardTitle className="text-xl">{item.title}</CardTitle>
-                    <CardDescription className="mt-3 text-base">{item.description}</CardDescription>
                   </CardContent>
                 </Card>
-              </div>
-            ))}
 
-            {/* Present dot */}
-            <div className="absolute left-1/2 bottom-0 -translate-x-1/2 z-10">
-              <div className="w-6 h-6 rounded-full bg-brand-500 border-4 border-white dark:border-neutral-950 shadow-lg animate-pulse" />
+                <Card variant="elevated">
+                  <CardContent className="p-6">
+                    <h3 className="font-heading font-semibold text-neutral-900 dark:text-neutral-100 mb-4">
+                      Condiciones médicas
+                    </h3>
+                    <div className="space-y-2">
+                      {[
+                        "Mielopatía Cervical con prótesis C3-C4-C5",
+                        "Dos hernias cervicales (arriba y abajo de prótesis)",
+                        "Espasticidad severa (convulsiones involuntarias)",
+                        "Pérdida de musculatura extremidades derechas",
+                        "Dolor crónico (antes: Pregabalina 900mg/día + Tramadol)",
+                        "Declarado inválido 100% por enfermedad catastrófica",
+                      ].map((item, i) => (
+                        <div key={i} className="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-400">
+                          <span className="text-red-500 mt-1">•</span>
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <blockquote className="p-6 bg-brand-50 dark:bg-brand-950/30 border-l-4 border-brand-600 rounded-r-xl">
+                  <p className="text-neutral-700 dark:text-neutral-300 italic">
+                    &ldquo;Ya no busco la tranquilidad, tampoco la felicidad. Apareció algo totalmente desconocido,
+                    fascinante y es el poder ilimitado que me entrega la serenidad.&rdquo;
+                  </p>
+                  <footer className="mt-3 text-sm text-neutral-500 dark:text-neutral-400">
+                    — Mauricio Ochoa
+                  </footer>
+                </blockquote>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Philosophy Cards */}
-      <section className="section bg-neutral-50 dark:bg-neutral-900" aria-labelledby="philosophy-heading">
+      {/* Timeline */}
+      <section className="section bg-neutral-50 dark:bg-neutral-900/50">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 id="philosophy-heading" className="font-heading font-bold text-neutral-900 dark:text-neutral-50 text-3xl sm:text-4xl lg:text-5xl mb-4">
-              Los principios que <span className="text-gradient">guían mi vida</span>
+          <div className="max-w-4xl mx-auto">
+            <h2 className="font-heading font-bold text-neutral-900 dark:text-neutral-50 text-3xl text-center mb-16">
+              Línea de tiempo
             </h2>
-            <p className="text-lg text-neutral-600 dark:text-neutral-400">
-              Más allá de la técnica, el Tai Chi es una filosofía de vida. Estos son los pilares
-              que sostienen mi práctica y mi enseñanza.
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Wu Wei — No Esfuerzo",
-                description:
-                  "La acción sin fuerza. Fluir con la naturaleza de las cosas. El bambú se dobla pero no se rompe.",
-                quote: '"El agua no lucha, fluye."',
-              },
-              {
-                title: "Yin Yang — Equilibrio Dinámico",
-                description:
-                  "Lo opuesto se complementa. Fuerza y suavidad. Movimiento y quietud. Uno no existe sin el otro.",
-                quote: '"En la quietud hay movimiento. En el movimiento, quietud."',
-              },
-              {
-                title: "Shen — Espíritu/Conciencia",
-                description:
-                  "La mente guía al Qi, el Qi guía al cuerpo. La intención (Yi) precede al movimiento.",
-                quote: '"Donde va la intención, fluye la energía."',
-              },
-            ].map((principle, i) => (
-              <Card key={i} variant="elevated" className="h-full p-6">
-                <CardTitle className="text-xl mb-3">{principle.title}</CardTitle>
-                <CardDescription className="text-base mb-4">{principle.description}</CardDescription>
-                <blockquote className="text-neutral-600 dark:text-neutral-400 italic border-l-4 border-brand-500 pl-4">
-                  {principle.quote}
-                </blockquote>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+            <div className="relative">
+              {/* Vertical line */}
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-neutral-200 dark:bg-neutral-800" />
 
-      {/* Metaphor Section */}
-      <section className="section bg-white dark:bg-neutral-950" aria-labelledby="metaphor-heading">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {[
-              {
-                icon: "🌱",
-                title: "La Semilla",
-                metaphor: "La crisis fue la semilla. En la oscuridad de la tierra, la semilla no muere: germina.",
-                lesson: "El dolor no es castigo. Es preparación.",
-              },
-              {
-                icon: "🌊",
-                title: "El Agua",
-                metaphor: "El Tai Chi me enseñó a ser agua. Se adapta a cualquier forma. Fluye alrededor de los obstáculos. Con el tiempo, desgasta la piedra.",
-                lesson: "La suavidad vence a la rigidez.",
-              },
-              {
-                icon: "☀️",
-                title: "El Sol",
-                metaphor: "Hoy mi práctica ilumina a otros. No porque sea especial, sino porque el sol simplemente brilla. La transmisión es natural.",
-                lesson: "Sanado, sano. Despierto, despierto.",
-              },
-            ].map((meta, i) => (
-              <div key={i} className="text-center">
-                <div className="text-6xl mb-6">{meta.icon}</div>
-                <h3 className="font-heading font-bold text-neutral-900 dark:text-neutral-50 text-2xl mb-4">{meta.title}</h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-4 leading-relaxed">{meta.metaphor}</p>
-                <div className="p-4 bg-brand-50 dark:bg-brand-950/30 rounded-xl border border-brand-200 dark:border-brand-800">
-                  <p className="font-medium text-brand-700 dark:text-brand-300">{meta.lesson}</p>
-                </div>
+              <div className="space-y-12">
+                {timeline.map((item, i) => (
+                  <div key={i} className={`relative flex flex-col md:flex-row gap-8 items-start ${
+                    i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}>
+                    {/* Dot */}
+                    <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-brand-600 border-4 border-white dark:border-neutral-950 z-10" />
+
+                    {/* Content */}
+                    <div className={`flex-1 ml-16 md:ml-0 ${i % 2 === 0 ? "md:text-right md:pr-12" : "md:text-left md:pl-12"}`}>
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-medium mb-3">
+                        <span>{item.icon}</span>
+                        <span>{item.year}</span>
+                      </div>
+                      <div className="text-xs font-medium text-brand-600 dark:text-brand-400 mb-1">
+                        {item.category}
+                      </div>
+                      <h3 className="font-heading font-semibold text-neutral-900 dark:text-neutral-100 text-lg mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+
+                    {/* Spacer for alternating layout */}
+                    <div className="hidden md:block flex-1" />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section bg-neutral-900 dark:bg-neutral-50" aria-labelledby="cta-heading">
+      <section className="section bg-neutral-900 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 id="cta-heading" className="font-heading font-bold text-neutral-50 dark:text-neutral-900 text-3xl sm:text-4xl lg:text-5xl mb-6">
-            Tu camino <span className="text-brand-400 dark:text-brand-600">comienza con un paso</span>
+          <h2 className="font-heading font-bold text-3xl mb-6">
+            ¿Quieres conocer el camino?
           </h2>
-          <p className="text-lg text-neutral-300 dark:text-neutral-600 max-w-2xl mx-auto mb-10">
-            No necesitas estar lesionado para empezar. Solo necesitas la intención de moverte
-            con más conciencia.
+          <p className="text-lg text-neutral-300 max-w-2xl mx-auto mb-8">
+            La historia de Mauricio es solo el comienzo. Descubre cómo el Tai Chi puede
+            transformar tu vida, como lo hizo con la suya.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" asChild>
-              <Link href="/contacto" className="flex items-center gap-2">
-                Agendar sesión
-                <ArrowLeft className="w-5 h-5 rotate-180" />
+              <Link href="/practica">
+                Descubre la práctica
               </Link>
             </Button>
-            <Button variant="outline" size="lg" className="border-neutral-300 text-neutral-100 hover:bg-neutral-800 dark:border-neutral-600 dark:text-neutral-900 dark:hover:bg-neutral-200" asChild>
-              <Link href="/practica">Explorar prácticas</Link>
+            <Button variant="outline" size="lg" asChild>
+              <Link href="/contacto">
+                Agenda una sesión
+              </Link>
             </Button>
           </div>
         </div>
